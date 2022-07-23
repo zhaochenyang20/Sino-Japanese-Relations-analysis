@@ -79,6 +79,11 @@
 
 笔记 DDL 为 26 日。
 
+## 开发规范
+
+1. 参考我在暑培课程的讲义，注意代码风格和鲁棒性等等要求
+2. 开设分支进行开发，禁止直接修改 `main`
+
 ## 参考资料
 
 [Analysis-of-National-Branding-Strategy-from-China-Japan-Media](https://github.com/zhaochenyang20/Analysis-of-National-Branding-Strategy-from-China-Japan-Media)
