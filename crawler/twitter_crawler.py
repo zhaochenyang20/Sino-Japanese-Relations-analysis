@@ -88,27 +88,30 @@ def get_page():
                 logger.exception(e)
 
 
-# def login():
-    # """
-    # 未完工，事实上实操的时候我是手动登录的
-    # 真的太麻烦了，而且相比真实操作，自动操作浏览器会导向另一个界面?
-    # :return:
-    # """
-    #
-    # with open("twitter/settings.txt", "r", encoding='utf-8') as f:
-    #     settings = json.load(f)
-    #
-    # # 登录界面啦
-    # driver = selenium.webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
-    # driver.get("https://twitter.com/i/flow/login")
-    # wdw(driver, 20).until(EC.visibility_of_element_located((By.XPATH, '//div[@class="css-901oao r-1awozwy r-6koalj r-18u37iz r-16y2uox r-37j5jr r-a023e6 r-b88u0q r-1777fci r-rjixqe r-bcqeeo r-q4m81j r-qvutc0"]')))
-    # time.sleep(1)
-    #
-    # # 输入账号
-    # email = driver.find_element(By.XPATH, "//input[@autocomplete='username']")
-    # email.send_keys(settings['email'])
-    # time.sleep(0.5)
-    #
-    # # 跳转，输入密码
-    # btn = driver.find_element(By.XPATH, '//div[@class="css-901oao r-1awozwy r-6koalj r-18u37iz r-16y2uox r-37j5jr r-a023e6 r-b88u0q r-1777fci r-rjixqe r-bcqeeo r-q4m81j r-qvutc0"]')
-    # btn.click()
+def login():
+    """
+    未完工，事实上实操的时候我是手动登录的
+    真的太麻烦了，而且相比真实操作，自动操作浏览器会导向另一个界面?
+    :return:
+    """
+
+    with open("twitter/settings.txt", "r", encoding='utf-8') as f:
+        settings = json.load(f)
+
+    # 登录界面啦
+    driver = selenium.webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
+    driver.get("https://twitter.com/i/flow/login")
+    wdw(driver, 20).until(EC.visibility_of_element_located((By.XPATH, '//div[@class="css-901oao r-1awozwy r-6koalj r-18u37iz r-16y2uox r-37j5jr r-a023e6 r-b88u0q r-1777fci r-rjixqe r-bcqeeo r-q4m81j r-qvutc0"]')))
+    time.sleep(1)
+
+    # 输入账号
+    email = driver.find_element(By.XPATH, "//input[@autocomplete='username']")
+    email.send_keys(settings['email'])
+    time.sleep(0.5)
+
+    # 跳转，输入密码
+    btn = driver.find_element(By.XPATH, '//div[@class="css-901oao r-1awozwy r-6koalj r-18u37iz r-16y2uox r-37j5jr r-a023e6 r-b88u0q r-1777fci r-rjixqe r-bcqeeo r-q4m81j r-qvutc0"]')
+    btn.click()
+
+
+
