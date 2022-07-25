@@ -2,21 +2,40 @@
 
 ## 文档目标
 
-此文档按照一字班同学 Python 课程小学期课程的要求汇编，**在暑培课程之外，扩充更多相应的文档和资料，做到了对于小学期内容的全覆盖。**
+此文档按照一字班同学 Python 课程小学期课程的要求汇编，**与暑培内容重叠的部分，进行了修订。暑培课程之外，扩充更多相应的文档，主要是 BeatifulSoup4，Pandas，Matplotlib，做到了对于小学期内容的全覆盖与降维打击。**
 
-希望能作为 Python 小学期有力的预习自学资料。
+希望能作为 Python 小学期有力的预习自学资料。如果你参与了暑培的部分内容，可以相应略过。而暑培中未重点涉及的 Pandas 只是作为补充。
 
 ## 内容概述
 
-`TODO: File Tree`
+```shell
+.
+├── CodeReview.md
+├── DS_tutorial.pdf
+├── Python
+│   ├── Numpy.ipynb
+│   └── Python\ Advanced\ Topics.ipynb
+├── backend
+│   └── Django.ipynb
+├── crawler
+│   └── crawler.ipynb
+├── readme.md
+├── soup
+│   ├── BeatifulSoup4.ipynb
+│   ├── Pandas.ipynb
+│   └── README.md
+└── visualize
+    ├── Matplotlib.ipynb
+    └── README.md
 
-分为如下部分：
+5 directories, 12 files
+```
 
-1. Python 基础语法与 Python 进阶（IPython）`TODO`
-2. 爬虫 `TODO`
-3. 数据分析：BeautifulSoup4 与 Matplotlib `TODO`
-4. Python 后端：Django `TODO`
-5. 数据科学：Numpy 与 Pandas
+1. Python 路径下：[Python 基础语法](https://docs.net9.org/languages/python/)与 Python 进阶（IPython）、Numpy
+2. Crawler 路径下：crawler
+3. soup 路径下：BeautifulSoup4 与 Matplotlib 
+4. backend 路径下：Django
+5. visualize 路径下：Matplotlib
 
 ## 使用方法
 
