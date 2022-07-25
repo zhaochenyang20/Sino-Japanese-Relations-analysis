@@ -3,6 +3,7 @@
 1.需要使用curl指令下载csv格式数据文件来运行示例时，如果curl出现问题，可以直接向pd.read_csv()传入下载链接，直接从网络上加载数据；
 
 2.在Basemap部分，如果遇到绘制的地图不符合预期的情况，可以尝试运行以下代码：
+
 ```
 conda install -c conda-forge basemap-data-hires
 ```
