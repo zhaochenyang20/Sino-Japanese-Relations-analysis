@@ -36,7 +36,13 @@
 
 ## 尾声
 
-于是乎，就有了你看到的此份文档。这份文档是我个人邀请三位一字班计算机系或者软院的同学们一同参考暑培讲义所编写的。基本涵盖了小学期 Python 课程的所有需求。从[语法基础](https://docs.net9.org/languages/python/)，到 IPython，Numpy，Pandas，BeautifulSoup4，Matplotlib，DJango 等全部资料。
+于是乎，就有了你看到的此份文档。这份文档是我个人邀请三位一字班计算机系或者软院的同学们一同参考暑培讲义所编写的。基本涵盖了小学期 Python 课程的所有需求。**在暑培课程之外，我们扩充了相应的文档和资料。**从[语法基础](https://docs.net9.org/languages/python/)，到 IPython，Numpy，Pandas，BeautifulSoup4，Matplotlib，Django 等全部资料。
+
+# 使用方法
+
+关于 Jupyter Notebook 和 Python 基础环境的配置请参考[此链接](https://zhaochen20.notion.site/Python-2f9538e9f6024827b55abbeb48025b30)。
+
+文档下所有的内容都是 markdown 与 Jupyter Notebook，请将仓库 clone 到本地使用。
 
 `TODO: File Tree`
 
