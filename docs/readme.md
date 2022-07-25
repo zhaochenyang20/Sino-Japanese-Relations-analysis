@@ -1,6 +1,40 @@
-# 读者须知
+# 使用方法
 
-## 缘由
+## 文档目标
+
+此文档按照一字班同学 Python 课程小学期课程的要求汇编，**在暑培课程之外，扩充更多相应的文档和资料，做到了对于小学期内容的全覆盖。**
+
+希望能作为 Python 小学期有力的预习自学资料。
+
+## 内容概述
+
+`TODO: File Tree`
+
+分为如下部分：
+
+1. Python 基础语法与 Python 进阶（IPython）`TODO`
+2. 爬虫 `TODO`
+3. 数据分析：BeautifulSoup4 与 Matplotlib `TODO`
+4. Python 后端：Django `TODO`
+5. 数据科学：Numpy 与 Pandas
+
+## 使用方法
+
+文档全部由 markdown 与 Jupyter Notebook 写成，请将仓库 clone 到本地使用。
+
+关于 Jupyter Notebook 和 Python 基础环境的配置请参考[此链接](https://zhaochen20.notion.site/Python-2f9538e9f6024827b55abbeb48025b30)。
+
+## 学习顺序
+
+建议小学期选择了 Python 的同学，按照[基础语法](https://docs.net9.org/languages/python/)，IPython，Crawler，BeautifulSoup4，Matplotlib，DJango 的顺序进行学习。而其余两块内容 Numpy，Pandas 在小学期使用并不多，可以留作个人兴趣衍生。
+
+## 补充说明
+
+由于时间仓促，错误在所难免，如若文档出现问题，请及时在本仓库的 [Issue](https://github.com/zhaochenyang20/Sino-Japanese-Relations-analysis/issues) 界面提出。
+
+# 为何而写
+
+## 初起
 
 暑假初期，我在处理暑培课程安排时，王导突然来找我，询问科协是否有课程指引方向的资料，类似 [docs9](https://docs.net9.org/) 的风格。
 
@@ -38,16 +72,6 @@
 
 于是乎，就有了你看到的此份文档。这份文档是我个人邀请三位一字班计算机系或者软院的同学们一同参考暑培讲义所编写的。基本涵盖了小学期 Python 课程的所有需求。**在暑培课程之外，我们扩充了相应的文档和资料。**从[语法基础](https://docs.net9.org/languages/python/)，到 IPython，Numpy，Pandas，BeautifulSoup4，Matplotlib，Django 等全部资料。
 
-# 使用方法
-
-关于 Jupyter Notebook 和 Python 基础环境的配置请参考[此链接](https://zhaochen20.notion.site/Python-2f9538e9f6024827b55abbeb48025b30)。
-
-文档下所有的内容都是 markdown 与 Jupyter Notebook，请将仓库 clone 到本地使用。
-
-`TODO: File Tree`
-
-我个人建议小学期选择了 Python 的同学，按照[基础语法](https://docs.net9.org/languages/python/)，IPython，Crawler，BeautifulSoup4，Matplotlib，DJango 的顺序进行学习。而其余两块内容 Numpy，Pandas 在小学期使用并不多，可以留作个人兴趣衍生。
-
 # 致谢
 
 ## 汇编者
@@ -65,6 +89,3 @@
 - [c7w](https://github.com/c7w)
 - [lambda](https://github.com/Btlmd)
 
-# 后续
-
-由于时间仓促，错误在所难免，如若文档出现问题，请及时在本仓库的 [Issue](https://github.com/zhaochenyang20/Sino-Japanese-Relations-analysis/issues) 界面提出。
