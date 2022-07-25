@@ -35,7 +35,7 @@
 
 1. Python 路径下：[Python 基础语法](https://docs.net9.org/languages/python/)与 Python 进阶（IPython）、Numpy
 2. Crawler 路径下：crawler
-3. soup 路径下：BeautifulSoup4 与 Matplotlib 
+3. soup 路径下：BeautifulSoup4 与 Pandas
 4. backend 路径下：Django
 5. visualize 路径下：Matplotlib
 
