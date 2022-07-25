@@ -41,9 +41,10 @@
 
 ## 使用方法
 
-文档全部由 markdown 与 Jupyter Notebook 写成，请将仓库 clone 到本地使用。
+文档全部由 markdown 与 Jupyter Notebook 写成。
 
-关于 Jupyter Notebook 和 Python 基础环境的配置请参考[此链接](https://zhaochen20.notion.site/Python-2f9538e9f6024827b55abbeb48025b30)。
+1. 你可以将仓库 clone 到本地使用，顺带练习你的 Git 技能，毕竟 QT 开发不使用 Git 会极度痛苦。同时，关于 Jupyter Notebook 和 Python 基础环境的配置请参考[此链接](https://zhaochen20.notion.site/Python-2f9538e9f6024827b55abbeb48025b30)。
+2. 你可以使用 Google Colab 服务。比如你希望运行 `./soup/Pandas.ipynb`，先获取其在 Github 上的 url，例如 https://github.com/zhaochenyang20/Sino-Japanese-Relations-analysis/blob/main/docs/soup/Pandas.ipynb，随后登陆 https://colab.research.google.com/github/zhaochenyang20/Sino-Japanese-Relations-analysis/blob/main/docs/soup/Pandas.ipynb 即可。
 
 ## 学习顺序
 
