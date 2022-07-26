@@ -45,9 +45,54 @@
 
 1. 你可以将仓库 clone 到本地使用，顺带练习你的 Git 技能，毕竟 QT 开发不使用 Git 会极度痛苦。同时，关于 Jupyter Notebook 和 Python 基础环境的配置请参考[此链接](https://zhaochen20.notion.site/Python-2f9538e9f6024827b55abbeb48025b30)。
 
-2. 你也可以使用 Google Colab 服务。比如你希望运行 `./soup/Pandas.ipynb`，先获取其在 Github 上的 url，随后根据基本规律登陆下方链接即可。
+2. 你也可以使用 Google Colab 服务。
 
-   https://colab.research.google.com/github/zhaochenyang20/Sino-Japanese-Relations-analysis/blob/main/docs/soup/Pandas.ipynb
+   * 首先打开 Google Colab 为 Github 适配的界面：点击此[链接](https://colab.research.google.com/github/)，在对应位置输入该仓库链接（https://github.com/zhaochenyang20/Sino-Japanese-Relations-analysis），然后 Enter，Colab 便会自动爬取该仓库的全部 ipynb 文件，并以列表形式显示在下面。点击对应文件右侧图标，便可以在新标签页打开该笔记本。
+   
+   	![colab.jpg](https://wkphoto.cdn.bcebos.com/48540923dd54564e2f51075fa3de9c82d1584fa4.jpg)
+   
+   * 注意事项
+   
+   	1. 由于 Colab 自带的包的版本都很低，可能会出现部分 API 不兼容的情况。所以在使用下列笔记本时，建议在运行前先进行包的安装和更新。
+   
+   		* Numpy.ipynb
+   
+   			```python
+   			! pip install --upgrade numpy
+   			```
+   
+   		* BeatifulSoup4.ipynb
+   
+   			```python
+   			! pip install --upgrade beautifulsoup4
+   			```
+   
+   		* Pandas.ipynb
+   
+   			```python
+   			! pip install --upgrade pandas
+   			! pip install --upgrade pandas-datareader
+   			```
+   
+   		* Matplotlib.ipynb
+   
+   			```
+   			! pip install --upgrade matplotlib
+   			! pip install --upgrade basemap
+   			! pip install basemap-data-hires
+   			```
+   
+   		在安装和更新完毕后，Colab 会输出如下 log：
+   
+   		```
+   		WARNING: The following packages were previously imported in this runtime:
+   		  [···]
+   		You must restart the runtime in order to use newly installed versions.
+   		```
+   
+   		此时需要点击 log 下方的 `RESTART RUNTIME` 按钮即可将更新应用，接下来你便可以正常使用笔记本了。
+   
+   	2. 如果你发现有部分系统命令（即在 Jupyter Notebook 中以 ! 开头）无法运行，请尝试点击界面中的“复制到云端硬盘”，在 Google Drive 中的副本中运行。
 
 ## 学习顺序
 
