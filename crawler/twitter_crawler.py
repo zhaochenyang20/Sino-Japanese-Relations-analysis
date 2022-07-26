@@ -31,16 +31,48 @@ console.setFormatter(formatter)
 logger.addHandler(console)
 
 
-def get_page():
+def login():
+    """
+    登录https://twitter.com/home
+    请将账号和密码分别写在twitter/settings.txt下的'username'和'password'中
+    :return: driver 模拟浏览器
+    """
+
+    with open("twitter/settings.txt", "r", encoding='utf-8') as f:
+        settings = json.load(f)
+
+    # 登录界面啦
+    driver = selenium.webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
+    driver.get("https://twitter.com/home")
+    wdw(driver, 20).until(EC.visibility_of_element_located((By.XPATH, '//div[@class="css-901oao r-1awozwy r-6koalj r-18u37iz r-16y2uox r-37j5jr r-a023e6 r-b88u0q r-1777fci r-rjixqe r-bcqeeo r-q4m81j r-qvutc0"]')))
+    logger.info('begin logging in')
+    time.sleep(1)
+
+    # 输入账号，并跳转
+    username = driver.find_element(By.XPATH, "//input[@autocomplete='username']")
+    username.send_keys(settings['username'])
+    logger.info('sending username')
+    btn = driver.find_element(By.XPATH, '//div[@class="css-901oao r-1awozwy r-6koalj r-18u37iz r-16y2uox r-37j5jr r-a023e6 r-b88u0q r-1777fci r-rjixqe r-bcqeeo r-q4m81j r-qvutc0"]')
+    btn.click()
+
+    # 输入密码，并跳转
+    wdw(driver, 5).until(EC.visibility_of_element_located((By.XPATH, "/input[@autocomplete='sentences']")))
+    passwd = driver.find_element(By.XPATH, "/input[@autocomplete='sentences']")
+    passwd.send_keys(settings['password'])
+    logger.info('sending password')
+    btn = driver.find_element(By.XPATH, '//div[@class="css-901oao r-1awozwy r-6koalj r-18u37iz r-16y2uox r-37j5jr r-a023e6 r-b88u0q r-1777fci r-rjixqe r-bcqeeo r-q4m81j r-qvutc0"]')
+    btn.click()
+
+    return driver
+
+
+def get_page(driver):
     """
     根据twitter/settings.txt下的搜索请求，在twitter站内进行搜索，将结果写入twitter/{query}.html
     利用selenium自动翻页到最底部
+    :param driver 浏览器!
     :return:
     """
-
-    # 手动操作登录twitter，有空了可能会补充自动登录吧
-    driver = selenium.webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
-    driver.get("https://twitter.com/home")
 
     with open("twitter/settings.txt", "r", encoding="utf-8") as f:
         query_list = json.load(f)['query']
@@ -88,30 +120,9 @@ def get_page():
                 logger.exception(e)
 
 
-def login():
-    """
-    未完工，事实上实操的时候我是手动登录的
-    真的太麻烦了，而且相比真实操作，自动操作浏览器会导向另一个界面?
-    :return:
-    """
-
-    with open("twitter/settings.txt", "r", encoding='utf-8') as f:
-        settings = json.load(f)
-
-    # 登录界面啦
-    driver = selenium.webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
-    driver.get("https://twitter.com/i/flow/login")
-    wdw(driver, 20).until(EC.visibility_of_element_located((By.XPATH, '//div[@class="css-901oao r-1awozwy r-6koalj r-18u37iz r-16y2uox r-37j5jr r-a023e6 r-b88u0q r-1777fci r-rjixqe r-bcqeeo r-q4m81j r-qvutc0"]')))
-    time.sleep(1)
-
-    # 输入账号
-    email = driver.find_element(By.XPATH, "//input[@autocomplete='username']")
-    email.send_keys(settings['email'])
-    time.sleep(0.5)
-
-    # 跳转，输入密码
-    btn = driver.find_element(By.XPATH, '//div[@class="css-901oao r-1awozwy r-6koalj r-18u37iz r-16y2uox r-37j5jr r-a023e6 r-b88u0q r-1777fci r-rjixqe r-bcqeeo r-q4m81j r-qvutc0"]')
-    btn.click()
+def main():
+    get_page(login())
 
 
-
+if __name__ == '__main__':
+    main()
