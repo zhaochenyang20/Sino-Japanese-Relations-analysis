@@ -51,9 +51,9 @@
 8 directories, 10 files
 ```
 
-`crawler` 为爬虫工作文件夹 @QuentinHsuow，`soup` 为解析文件夹 @caigouyige，`visualize` 为可视化文件夹 @luohaowen2003。`docs` 为按照王导想法需要完成的笔记文件夹，请按照各自的主线任务完成对应部分的支线任务。
+`crawler` 为爬虫工作文件夹 @QuentinHsuow，`soup` 为解析文件夹 @lurf21，`visualize` 为可视化文件夹 @luohaowen2003。`docs` 为按照王导想法需要完成的笔记文件夹，请按照各自的主线任务完成对应部分的支线任务。
 
-在 `docs` 文件夹下存放了一些原始文件，`DS_tutorial.pdf` 为我暑培课程的参考书，我也强烈建议各位参考。`crawler` 文件夹请参考 `lambda` 的暑培讲义，编写一份 Jupyter 文档。而 `soup` 文件夹，按照之前的规划，请 @caigouyige 把自己翻译的 Pandas 和 BS4 文档 merge 进去。最后，`visualize` 文件夹，请 @luohaowen2003 参考 `DS_tutorial.pdf` 把 `Matplotlib.ipynb` 翻译完全。
+在 `docs` 文件夹下存放了一些原始文件，`DS_tutorial.pdf` 为我暑培课程的参考书，我也强烈建议各位参考。`crawler` 文件夹请参考 `lambda` 的暑培讲义，编写一份 Jupyter 文档。而 `soup` 文件夹，按照之前的规划，请 @lurf21 把自己翻译的 Pandas 和 BS4 文档 merge 进去。最后，`visualize` 文件夹，请 @luohaowen2003 参考 `DS_tutorial.pdf` 把 `Matplotlib.ipynb` 翻译完全。
 
 翻译完整后的文件，会经过科协网络部技能文档组审核 @c7w，对于原创性较高的文档给予经济回报。
 
@@ -69,7 +69,7 @@
 
 ### 解析部分
 
-我的建议是，完成手头的所有笔记后，再开始解析也不迟。目前 @caigouyige 只剩下了 BS4 文档。注意，解析的要求参考 `target` 文件夹。
+我的建议是，完成手头的所有笔记后，再开始解析也不迟。目前 @lurf21 只剩下了 BS4 文档。注意，解析的要求参考 `target` 文件夹。
 
 文档 DDL 定于 26 日，解析 DDL 定于 28 日。请合理保存所有的解析源文件和解析后的所有格式，并存放在清华云盘。
 
