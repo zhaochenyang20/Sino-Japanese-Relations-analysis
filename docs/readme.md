@@ -51,9 +51,9 @@
 
 你也可以使用 Google Colab 服务。
 
-* 首先打开 Google Colab 为 Github 适配的界面：点击此[链接](https://colab.research.google.com/github/)，在对应位置输入该仓库链接：
+* 首先打开 Google Colab 为 Github 适配的界面。点击此[链接](https://colab.research.google.com/github/)，在对应位置输入该仓库链接：
 
-  ```
+  ```tex
   https://github.com/zhaochenyang20/Sino-Japanese-Relations-analysis
   ```
   
