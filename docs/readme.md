@@ -20,7 +20,9 @@
 │   ├── Numpy.ipynb
 │   └── Python\ Advanced\ Topics.ipynb
 ├── backend
-│   └── Django.md
+│   ├── Django.md
+│   ├── Django_preparation.pdf
+│   └── SQL.pdf
 ├── crawler
 │   └── crawler.ipynb
 ├── readme.md
@@ -33,7 +35,7 @@
     ├── Matplotlib.ipynb
     └── README.md
 
-5 directories, 13 files
+5 directories, 15 files
 ```
 
 1. Python 路径下：[Python 基础语法](https://docs.net9.org/languages/python/)与 Python 进阶（IPython）、Numpy
