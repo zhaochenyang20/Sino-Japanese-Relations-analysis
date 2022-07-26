@@ -18,19 +18,20 @@
 │   ├── Numpy.ipynb
 │   └── Python\ Advanced\ Topics.ipynb
 ├── backend
-│   └── Django.ipynb
+│   └── Django.md
 ├── crawler
 │   └── crawler.ipynb
 ├── readme.md
 ├── soup
 │   ├── BeatifulSoup4.ipynb
 │   ├── Pandas.ipynb
+│   ├── Pandas_refined.ipynb
 │   └── README.md
 └── visualize
     ├── Matplotlib.ipynb
     └── README.md
 
-5 directories, 12 files
+5 directories, 13 files
 ```
 
 1. Python 路径下：[Python 基础语法](https://docs.net9.org/languages/python/)与 Python 进阶（IPython）、Numpy
@@ -51,8 +52,14 @@
 
 你也可以使用 Google Colab 服务。
 
-* 首先打开 Google Colab 为 Github 适配的界面：点击此[链接](https://colab.research.google.com/github/)，在对应位置输入该仓库链接（https://github.com/zhaochenyang20/Sino-Japanese-Relations-analysis），然后 Enter，Colab 便会自动爬取该仓库的全部 ipynb 文件，并以列表形式显示在下面。点击对应文件右侧图标，便可以在新标签页打开该笔记本。
+* 首先打开 Google Colab 为 Github 适配的界面。点击此[链接](https://colab.research.google.com/github/)，在对应位置输入该仓库链接：
 
+  ```tex
+  https://github.com/zhaochenyang20/Sino-Japanese-Relations-analysis
+  ```
+  
+  然后 Enter，Colab 便会自动爬取该仓库的全部 ipynb 文件，并以列表形式显示在下面。点击对应文件右侧图标，便可以在新标签页打开该笔记本。
+  
   ![colab.jpg](https://wkphoto.cdn.bcebos.com/48540923dd54564e2f51075fa3de9c82d1584fa4.jpg)
 
 **注意事项**
@@ -61,26 +68,26 @@
 
     **Numpy.ipynb**
 
-    ```python
+    ```bash
     ! pip install --upgrade numpy
     ```
 
     **BeatifulSoup4.ipynb**
 
-    ```python
+    ```bash
     ! pip install --upgrade beautifulsoup4
     ```
 
     **Pandas.ipynb**
 
-    ```python
+    ```bash
     ! pip install --upgrade pandas
     ! pip install --upgrade pandas-datareader
     ```
 
     **Matplotlib.ipynb**
 
-    ```
+    ```bash
     ! pip install --upgrade matplotlib
     ! pip install --upgrade basemap
     ! pip install basemap-data-hires
