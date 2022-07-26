@@ -4,9 +4,11 @@
 
 关于大一小学期一些形而上学的课程体验，请参考计算机系的[课程攻略文档](https://docs.qq.com/doc/DZGp6VW5kUVZUWWtD)。与之不同，本文档的目标非常具体。
 
-此文档按照一字班同学 Python 课程小学期课程的要求汇编，**与暑培内容重叠的部分，进行了修订。暑培课程之外，扩充更多相应的文档，主要是 BeatifulSoup4，Pandas，Matplotlib，做到了对于小学期内容的全覆盖与降维打击。**
+此文档参考了自 2019 年到 2021 年三年 Python 小学期的要求，综合了暑培课程讲义、往年优秀作业与本人所参与的多个应用爬虫与数据分析的 SRT 工作汇编而成，**希望能够为一字班选修了 Python 小学期的同学提供有力的自学预习材料，也之后需要使用相关 Python 工具的同学提供支持。**
 
-希望能作为 Python 小学期有力的预习自学资料。如果你参与了暑培的部分内容，可以相应略过。而暑培中未重点涉及的 Pandas 只是作为补充。
+**与暑培内容重叠的部分，汇编者进行了修订，例如为网页爬虫提供了包括 Facebook，Twitter，Youtube 等高强度反爬网页的实例。如果你参与了暑培的部分内容，仍然建议你阅读经过汇编者补充的例子。**
+
+**暑培课程之外，汇编者扩充更多相应的文档，主要是 BeatifulSoup4，Pandas，Matplotlib，做到了对于小学期内容的全覆盖与降维打击。**
 
 ## 内容概述
 
@@ -18,7 +20,9 @@
 │   ├── Numpy.ipynb
 │   └── Python\ Advanced\ Topics.ipynb
 ├── backend
-│   └── Django.md
+│   ├── Django.md
+│   ├── Django_preparation.pdf
+│   └── SQL.pdf
 ├── crawler
 │   └── crawler.ipynb
 ├── readme.md
@@ -31,7 +35,7 @@
     ├── Matplotlib.ipynb
     └── README.md
 
-5 directories, 13 files
+5 directories, 15 files
 ```
 
 1. Python 路径下：[Python 基础语法](https://docs.net9.org/languages/python/)与 Python 进阶（IPython）、Numpy
@@ -39,6 +43,10 @@
 3. soup 路径下：BeautifulSoup4 与 Pandas
 4. backend 路径下：Django
 5. visualize 路径下：Matplotlib
+
+## 额外注意
+
+Pandas 与 Numpy 小学期并不必用，但是熟练的使用这两个工具会使得你的工作更加优雅。
 
 ## 使用方法
 
@@ -147,7 +155,7 @@
 
 >  **星星之火，可以燎原。**
 
-虽然目前计算机系的部分课程质量仍然堪忧，**但是我们每提出一次课改意见，每贡献一次开源资料，都会为计算机系课程质量提升留下不可磨灭的贡献。**我们会帮助到之后的学弟学妹，更高年级学长学姐也会如此帮助我们。
+虽然目前计算机系的部分课程质量仍然堪忧，**但是我们每提出一次课改意见，每贡献一次开源资料，都会为计算机系课程质量提升留下不可磨灭的贡献**。我们会帮助到之后的学弟学妹，更高年级学长学姐也会如此帮助我们。
 
 ## 尾声
 
