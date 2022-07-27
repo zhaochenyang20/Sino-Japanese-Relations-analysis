@@ -8,7 +8,7 @@
 conda install -c conda-forge basemap-data-hires
 ```
 
-3. 对于例子“Surface Temperature Data”，需要下载的数据文件较大，如果用curl指令下载过程中出现问题，可以尝试直接用浏览器访问美国宇航局戈达德太空研究所(http://data.giss.nasa.gov/，NASA’s Goddard Institute for Space Studies)的网站，并下载所需数据文件至工作文件夹。
+3.对于例子“Surface Temperature Data”，需要下载的数据文件较大，如果用curl指令下载过程中出现问题，可以尝试直接用浏览器访问[美国宇航局戈达德太空研究所](http://data.giss.nasa.gov/)(NASA’s Goddard Institute for Space Studies)的网站，并下载所需数据文件至工作文件夹。
 
 4. 对于其它可能出现的异常情况，可以使用 Ipython查阅 documents，自行调整 API 尝试解决。
 
