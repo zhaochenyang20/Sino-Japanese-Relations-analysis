@@ -44,6 +44,9 @@
 4. backend 路径下：Django
 5. visualize 路径下：Matplotlib
 
+### Python 语法基础
+Python入门与基础语法，见 [Python 基础语法](https://docs.net9.org/languages/python/)。
+
 ### Python 进阶
 Python Advanced Topics 文档主要分享一些 Python 的进阶内容，介绍一些实用技能栈。该文档涵盖 IPython 这一实用的 Python的交互式接口，以及 tqdm, argparse, pathlib 等实用 Python 库。
 
