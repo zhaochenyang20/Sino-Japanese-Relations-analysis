@@ -62,13 +62,13 @@ Crawler 文档主要讲述 Python 爬虫的基本用法以及实操建议，主�
 + 以不同类型的网页为例讲解什么情况下具体应当使用哪种方式。
 
 ### BeautifulSoup4
-Beautiful Soup 4 可以帮助我们来处理请求获得的HTML页面中的数据，进行过滤、筛选、查找，是 Python 爬虫的重要工具。这部分文档以大量实例介绍了 Beautiful Soup 4 的 API 和基本用法。
+BeautifulSoup4 可以帮助我们来处理请求获得的 HTML 页面中的数据，进行过滤、筛选、查找，是 Python 爬虫的重要工具。这部分文档以大量实例介绍了 BeautifulSoup4 的 API 和基本用法。
 
 ### Pandas
 Pandas 是在 NumPy 基础上建立的新程序库，提供了一种高效的 DataFrame 数据结构。DataFrame 本质上是一种带行标签和列标签、支持相同类型数据和缺失值的多维数组。Pandas 文档重点介绍该包中 Series、DataFrame 和其他相关数据结构的高效使用方法。
 
 ### Django
-Django 是一个由 Python 编写的一个开放源代码的 Web 应用框架。 使用 Django，只要很少的代码，Python 的程序开发人员就可以轻松地完成一个正式网站所需要的大部分内容，并进一步开发出全功能的 Web 服务。
+Django 是一个由 Python 编写的一个开放源代码的 Web 应用框架。 使用 Django，只要很少的代码，Python 程序开发人员就可以轻松地完成一个正式网站所需要的大部分内容，并进一步开发出全功能的 Web 服务。
 Django 部分教程旨在帮助大家：
 + 了解如何使用 Django 开发一个简单应用程序；
 + 了解前后端分离的开发模式，学习如何使用 Django 搭建一个后端；
