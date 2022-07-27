@@ -35,8 +35,8 @@ logger.addHandler(console)
 def get_url_from_google(keyword, page):
 
     """
-    根据所给的keyword在google上搜索相应的结果，搜索将从第page页开始
-    文件将写入crawler/jiia/url.txt中
+    根据所给的 keyword 在 google 上搜索相应的结果，搜索将从第 page 页开始
+    文件将写入 crawler/jiia/url.txt 中
     :param page: 希望开始的google搜索页面数
     :param keyword: 希望搜索的关键词
     :return:
@@ -61,7 +61,7 @@ def get_url_from_google(keyword, page):
             time.sleep(random.uniform(60, 120))
             continue
 
-        # 查找href
+        # 查找 href
         soup = BS(resp.text, 'lxml')
         href_list = list(map(lambda x: x['href'], soup.find_all("a", target="_blank")[0:20:2]))
 
@@ -71,7 +71,7 @@ def get_url_from_google(keyword, page):
             page += 1
             time.sleep(10)
 
-        # 不确定是错误还是结束了所以输出text，并返回page，结束程序
+        # 不确定是错误还是结束了所以输出 text ，并返回 page ，结束程序
         else:
             logger.info(f"{resp.text}")
             return page
@@ -79,7 +79,7 @@ def get_url_from_google(keyword, page):
 
 def jiia_pdf_downloader():
     """
-    利用selenium下载/jiia/url.txt下所有.pdf网页中的pdf文件，下载地址保存在jiia/settings.txt中
+    利用 selenium 下载 /jiia/url.txt 下所有 .pdf 网页中的 pdf 文件，下载地址保存在 jiia/settings.txt 中
     函数中每次time.sleep(5)，但网页似乎并没有设防，如果太慢可以减小
     :return:
     """

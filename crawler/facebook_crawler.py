@@ -39,7 +39,7 @@ class FacebookCrawler:
 
     def login(self):
         """
-        登入facebook
+        登入 facebook
         :return:
         """
         # open chrome
@@ -67,7 +67,7 @@ class FacebookCrawler:
 
     def get_information(self):
         """
-        搜索youtube信息
+        搜索 facebook 信息
         注意：请手动搜索
         :return:
         """
@@ -85,7 +85,7 @@ class FacebookCrawler:
                 now_height = driver.execute_script("return document.documentElement.scrollHeight")
 
                 # 如果滑动到页面地步，那么就停止
-                # 注意!!!如果你滑走页面的话这里可能有bug!!!可能会不滑动到底部就停下
+                # 注意!!!如果你滑走页面的话这里可能有 bug !!!可能会不滑动到底部就停下
                 if prev_height == now_height:
                     logger.info("finish crawling!!")
                     break
