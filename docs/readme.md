@@ -44,6 +44,39 @@
 4. backend 路径下：Django
 5. visualize 路径下：Matplotlib
 
+### Python 进阶
+Python Advanced Topics 文档主要分享一些 Python 的进阶内容，介绍一些实用技能栈。该文档涵盖 IPython 这一实用的 Python的交互式接口，以及 tqdm, argparse, pathlib 等实用 Python 库。
+
+### Numpy
+Numpy(Numerical Python 的简称) 几乎是整个 Python 科学计算生态系统的核心，它提供了高效存储和操作密集数据缓存的接口。这部分文档介绍了 Numpy 的用法，尤其强调了以下重点内容：
++ Numpy 和 Python 的效率区别
++ Numpy 广播机制的规则
++ Numpy Fancy Index
++ 传统索引的视图问题
+
+### crawler
+Crawler 文档主要讲述 Python 爬虫的基本用法以及实操建议，主要内容包括：
++ 最基本的 HTTP 知识以及如何利用浏览器 inspect 功能；
++ 解爬取网页的两大方式：利用 requests 发送请求，以及利用 selenium 模拟浏览器访问网页；
++ 实际操作过程中的注意事项；
++ 以不同类型的网页为例讲解什么情况下具体应当使用哪种方式。
+
+### BeautifulSoup4
+Beautiful Soup 4 可以帮助我们来处理请求获得的HTML页面中的数据，进行过滤、筛选、查找，是 Python 爬虫的重要工具。这部分文档以大量实例介绍了 Beautiful Soup 4 的 API 和基本用法。
+
+### Pandas
+Pandas 是在 NumPy 基础上建立的新程序库，提供了一种高效的 DataFrame 数据结构。DataFrame 本质上是一种带行标签和列标签、支持相同类型数据和缺失值的多维数组。Pandas 文档重点介绍该包中 Series、DataFrame 和其他相关数据结构的高效使用方法。
+
+### Django
+Django 是一个由 Python 编写的一个开放源代码的 Web 应用框架。 使用 Django，只要很少的代码，Python 的程序开发人员就可以轻松地完成一个正式网站所需要的大部分内容，并进一步开发出全功能的 Web 服务。
+Django 部分教程旨在帮助大家：
++ 了解如何使用 Django 开发一个简单应用程序；
++ 了解前后端分离的开发模式，学习如何使用 Django 搭建一个后端；
++ 掌握一种在服务器上部署 Django 的方式 （Django + Nginx + uWSGI 部署）。
+
+### Matplotlib
+Matplotlib 是建立在 NumPy 数组基础上的多平台数据可视化程序库，这部分讲义将详细介绍使用 Python 的 Matplotlib 工具实现数据可视化的方法，涵盖线形图、散点图、直方图等，包含了大量实例。
+
 ## 额外注意
 
 Pandas 与 Numpy 小学期并不必用，但是熟练的使用这两个工具会使得你的工作更加优雅。
