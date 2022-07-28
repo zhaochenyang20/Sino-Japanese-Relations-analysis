@@ -84,6 +84,10 @@ Matplotlib 是建立在 NumPy 数组基础上的多平台数据可视化程序�
 
 Pandas 与 Numpy 小学期并不必用，但是熟练的使用这两个工具会使得你的工作更加优雅。
 
+## 下载
+
+若要下载单个文件夹，复制该文件夹的网址，粘贴入 [DownGit](https://minhaskamal.github.io/DownGit/#/home) 中，选择 download 即可。
+
 ## 使用方法
 
 文档全部由 markdown 与 Jupyter Notebook 写成。
