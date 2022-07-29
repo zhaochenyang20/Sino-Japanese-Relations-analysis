@@ -33,11 +33,9 @@ logger.addHandler(console)
 
 def login():
     """
-    登录 https://twitter.com/home
-    请将账号和密码分别写在 twitter/settings.json 下的 'username' 和 'password' 中
-    :return: driver 模拟浏览器
+    login to https://twitter.com/home .
+    :return: driver selenium webdriver
     """
-
     with open("twitter/settings.json", "r", encoding='utf-8') as f:
         settings = json.load(f)
 
@@ -70,9 +68,9 @@ def login():
 
 def get_page(driver):
     """
-    根据 twitter/settings.json 下的搜索关键词('query' 属性)，在 twitter 站内进行搜索，将结果写入 twitter/{date}.html
-    query 格式: {keyword} until: 2012-10-01 since: 2012-09-01
-    :param driver 浏览器
+    Search for result in twitter. Searching query should be written in twitter/settings.json.
+    Query format: '{keyword} until: 2012-10-01 since: 2012-09-01'.
+    :param driver selenium webdriver
     :return:
     """
 

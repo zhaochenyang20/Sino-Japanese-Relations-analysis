@@ -29,8 +29,7 @@ logger.addHandler(console)
 
 def get_proxy():
     """
-    根据 tieba/settings.json 中保存的 IP 池的 API，提取 IP。
-    首先筛选已经用过的 IP， 再筛选无法连接的 IP， 最后返回一个可用的 Proxy_tag
+    Get available proxy.
     :return: str - proxy_tag (eg. '123.33.22.11:12345')
     """
 
@@ -82,8 +81,8 @@ def get_proxy():
 
 def get_url(keyword):
     """
-    通过百度贴吧的站内搜索，获取所想要帖子的链接
-    :param keyword: str 搜索关键词
+    Search for {keyword} in tieba.
+    :param keyword: str Searching keyword
     :return:
     """
 
@@ -120,7 +119,7 @@ def get_url(keyword):
 
 def get_tieba_post():
     """
-    根据 tieba/url.txt 中的链接，从百度贴吧爬取网页
+    Get the source code of all the websites in tieba/url.txt.
     :return:
     """
 

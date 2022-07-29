@@ -37,9 +37,8 @@ logger.addHandler(console)
 
 def get_video_url_from_youtube(keyword):
     """
-    根据输入的关键词在 youtube 中搜索相应的结果，在 youtube/url.txt 下写入目标视频的URL
-    注意，youtube 站内搜索结果非常有限，需要通过谷歌搜索才能获取大量内容
-    :param keyword: 搜索关键词
+    Search for {keyword} inside youtube.
+    :param keyword: Searching keyword
     :return:
     """
 
@@ -67,11 +66,10 @@ def get_video_url_from_youtube(keyword):
 
 def get_video_url_from_google(keyword, page):
     """
-    根据输入的关键词在 youtube 中搜索相应的结果，在 youtube/url.txt 下写入目标视频的 URL
-    注意，如果搜索次数太多请求会返回 429 ，可以多次运行该函数
-    :param page: 上次停留的页面值
-    :param keyword: 搜索关键词
-    :return: page: 停止时的页面
+    Search for {keyword} in google. Searching result will start from {page}.
+    :param page: the page searching result starts
+    :param keyword: searching keyword
+    :return: page: the last page being visited when this function terminated
     """
 
     with open("youtube/settings.json", "r", encoding='utf-8') as f:
@@ -117,11 +115,9 @@ def get_video_url_from_google(keyword, page):
 
 def get_page():
     """
-    根据 youtube/url.txt 下的 URL，依次访问每一个网页，并且获取网页的源代码，写入 ./youtube 文件夹下
-    已访问的视频 id 会写入 youtube/written.txt，所以可以随时停下该函数，不用担心 redundant visit
+    Get the source code of the websites in youtube/url.txt.
     :return:
     """
-
     driver = selenium.webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
     time.sleep(5)
     with open("youtube/url.txt", "r") as f:
@@ -168,8 +164,7 @@ def get_page():
 
 def left_num():
     """
-    获取剩余的任务数
-    :return: 剩余的任务数
+    Return the number of tasks left.
     """
     with open("youtube/url.txt", "r") as f:
         url_list = f.read().split()

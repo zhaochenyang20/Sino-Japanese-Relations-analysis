@@ -25,12 +25,11 @@ logger.addHandler(console)
 
 def get_urls_from_npo(keyword):
     """
-    输入希望查找的关键词，在 npo 站内进行搜索
-    搜索结果写入 ./genron_npo/url.txt 中
+    Search for {keyword} in www.genron-npo.net.
+    Searching result will be written in './genron_npo/url.txt'.
     :param keyword: str
     :return:
     """
-
     page = 1
     while True:
 
@@ -58,7 +57,7 @@ def get_urls_from_npo(keyword):
 
 def write_articles():
     """
-    获取文章的 url, 在 genron-npo 文件夹下生成文章
+    Write articles under ./genron_npo according to urls provided in genron_npo/url.txt.
     :return:
     """
     with open("genron_npo/url.txt", "r") as f:

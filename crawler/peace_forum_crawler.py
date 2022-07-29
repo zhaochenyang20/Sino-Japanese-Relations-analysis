@@ -23,12 +23,10 @@ logger.addHandler(console)
 
 
 def get_articles():
-
     """
-    根据 peace_forum/url.txt 下的链接查找网页，将网页写入 peace_forum/peace_forum/{index}.html
+    Get the source code of all the websites in peace_forum/url.txt.
     :return:
     """
-
     with open("peace_forum/url.txt", "r") as f:
         url_list = f.read().split()
 

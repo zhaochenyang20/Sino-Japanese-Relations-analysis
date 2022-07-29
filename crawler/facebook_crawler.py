@@ -39,9 +39,10 @@ class FacebookCrawler:
 
     def login(self):
         """
-        登入 facebook。将账号和密码写在 facebook/settings.json 中
+        Login to https://www.facebook.com. Please write your username and password in facebook/settings.json.
         :return:
         """
+
         # open chrome
         driver = selenium.webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
         self.driver = driver
@@ -67,13 +68,13 @@ class FacebookCrawler:
 
     def get_information(self):
         """
-        搜索 facebook 信息
-        注意：搜索过程请手动，利用 facebook 的高级搜索功能
+        Search for target information.
+        You should type in search query in the website by yourself once this function starts executing.
         :return:
         """
         driver = self.driver
 
-        # !!!此处请手动搜索!!!操作太麻烦了!!!
+        # !!!此处请手动搜索!!!
         logger.info("please start searching...")
         time.sleep(40)
 

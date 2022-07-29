@@ -33,10 +33,9 @@ logger.addHandler(console)
 
 def get_url_from_google(keyword, page):
     """
-    根据所给的 keyword 在 google 上搜索相应的结果，搜索将从第 page 页开始
-    文件将写入 crawler/jiia/url.txt 中
-    :param page: 希望开始的 google 搜索页面数
-    :param keyword: 希望搜索的关键词
+    Search for {keyword} in google. Searching result will start from {page}.
+    :param page: the page that the searching result starts
+    :param keyword: Searching keyword
     :return:
     """
     with open("jiia/settings.json", "r") as f:
@@ -85,8 +84,7 @@ def get_url_from_google(keyword, page):
 
 def download_jiia_pdf():
     """
-    利用 selenium 下载 /jiia/url.txt 下所有 .pdf 网页中的 pdf 文件，下载地址保存在 jiia/settings.json 中
-    函数中每次 time.sleep(5) ，但网页似乎并没有设防，如果觉得太慢可以减小
+    Download all the pdf files from URLs ends with '.pdf' in jiia/url.txt.
     :return:
     """
     with open("jiia/settings.json", "r", encoding='utf-8') as f:

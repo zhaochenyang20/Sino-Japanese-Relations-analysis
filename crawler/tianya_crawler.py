@@ -29,8 +29,8 @@ logger.addHandler(console)
 def get_url(keyword):
 
     """
-    根据 keyword 查找搜索结果。搜索结果将保存到 tianya/url.txt 。
-    :param keyword: 搜索关键词
+    Search for {keyword} in tianya.
+    :param keyword: Searching keyword
     :return:
     """
     page = 1
@@ -67,8 +67,7 @@ def get_url(keyword):
 
 def get_page():
     """
-    根据 url 访问页面并保存网页源码
-    天涯不设防，非常难出错
+    Get the source code of all the websites in tianya/url.txt.
     :return:
     """
     with open("tianya/url.txt", "r") as f:
