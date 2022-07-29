@@ -4,9 +4,11 @@
 
 关于大一小学期一些形而上学的课程体验，请参考计算机系的[课程攻略文档](https://docs.qq.com/doc/DZGp6VW5kUVZUWWtD)。与之不同，本文档的目标非常具体。
 
-此文档按照一字班同学 Python 课程小学期课程的要求汇编，**与暑培内容重叠的部分，进行了修订。暑培课程之外，扩充更多相应的文档，主要是 BeatifulSoup4，Pandas，Matplotlib，做到了对于小学期内容的全覆盖与降维打击。**
+此文档参考了自 2019 年到 2021 年三年 Python 小学期的要求，综合了暑培课程讲义、往年优秀作业与本人所参与的多个应用爬虫与数据分析的 SRT 工作汇编而成，**希望能够为一字班选修了 Python 小学期的同学提供有力的自学预习材料，也之后需要使用相关 Python 工具的同学提供支持。**
 
-希望能作为 Python 小学期有力的预习自学资料。如果你参与了暑培的部分内容，可以相应略过。而暑培中未重点涉及的 Pandas 只是作为补充。
+**与暑培内容重叠的部分，汇编者进行了修订，例如为网页爬虫提供了包括 Facebook，Twitter，Youtube 等高强度反爬网页的实例。如果你参与了暑培的部分内容，仍然建议你阅读经过汇编者补充的例子。**
+
+**暑培课程之外，汇编者扩充更多相应的文档，主要是 BeatifulSoup4，Pandas，Matplotlib，做到了对于小学期内容的全覆盖与降维打击。**
 
 ## 内容概述
 
@@ -18,7 +20,9 @@
 │   ├── Numpy.ipynb
 │   └── Python\ Advanced\ Topics.ipynb
 ├── backend
-│   └── Django.md
+│   ├── Django.md
+│   ├── Django_preparation.pdf
+│   └── SQL.pdf
 ├── crawler
 │   └── crawler.ipynb
 ├── readme.md
@@ -31,7 +35,7 @@
     ├── Matplotlib.ipynb
     └── README.md
 
-5 directories, 13 files
+5 directories, 15 files
 ```
 
 1. Python 路径下：[Python 基础语法](https://docs.net9.org/languages/python/)与 Python 进阶（IPython）、Numpy
@@ -39,6 +43,50 @@
 3. soup 路径下：BeautifulSoup4 与 Pandas
 4. backend 路径下：Django
 5. visualize 路径下：Matplotlib
+
+### Python 语法基础
+Python入门与基础语法，见 [Python 基础语法](https://docs.net9.org/languages/python/)。
+
+### Python 进阶
+Python Advanced Topics 文档主要分享一些 Python 的进阶内容，介绍一些实用技能栈。该文档涵盖 IPython 这一实用的 Python的交互式接口，以及 tqdm, argparse, pathlib 等实用 Python 库。
+
+### Numpy
+Numpy(Numerical Python 的简称) 几乎是整个 Python 科学计算生态系统的核心，它提供了高效存储和操作密集数据缓存的接口。这部分文档介绍了 Numpy 的用法，尤其强调了以下重点内容：
++ Numpy 和 Python 的效率区别
++ Numpy 广播机制的规则
++ Numpy Fancy Index
++ 传统索引的视图问题
+
+### crawler
+Crawler 文档主要讲述 Python 爬虫的基本用法以及实操建议，主要内容包括：
++ 最基本的 HTTP 知识以及如何利用浏览器 inspect 功能；
++ 解爬取网页的两大方式：利用 requests 发送请求，以及利用 selenium 模拟浏览器访问网页；
++ 实际操作过程中的注意事项；
++ 以不同类型的网页为例讲解什么情况下具体应当使用哪种方式。
+
+### BeautifulSoup4
+BeautifulSoup4 可以帮助我们来处理请求获得的 HTML 页面中的数据，进行过滤、筛选、查找，是 Python 爬虫的重要工具。这部分文档以大量实例介绍了 BeautifulSoup4 的 API 和基本用法。
+
+### Pandas
+Pandas 是在 NumPy 基础上建立的新程序库，提供了一种高效的 DataFrame 数据结构。DataFrame 本质上是一种带行标签和列标签、支持相同类型数据和缺失值的多维数组。Pandas 文档重点介绍该包中 Series、DataFrame 和其他相关数据结构的高效使用方法。
+
+### Django
+Django 是一个由 Python 编写的一个开放源代码的 Web 应用框架。 使用 Django，只要很少的代码，Python 程序开发人员就可以轻松地完成一个正式网站所需要的大部分内容，并进一步开发出全功能的 Web 服务。
+Django 部分教程旨在帮助大家：
++ 了解如何使用 Django 开发一个简单应用程序；
++ 了解前后端分离的开发模式，学习如何使用 Django 搭建一个后端；
++ 掌握一种在服务器上部署 Django 的方式 （Django + Nginx + uWSGI 部署）。
+
+### Matplotlib
+Matplotlib 是建立在 NumPy 数组基础上的多平台数据可视化程序库，这部分讲义将详细介绍使用 Python 的 Matplotlib 工具实现数据可视化的方法，涵盖线形图、散点图、直方图等，包含了大量实例。
+
+## 额外注意
+
+Pandas 与 Numpy 小学期并不必用，但是熟练的使用这两个工具会使得你的工作更加优雅。
+
+## 下载
+
+若要下载单个文件夹，复制该文件夹的网址，粘贴入 [DownGit](https://minhaskamal.github.io/DownGit/#/home) 中，选择 download 即可。
 
 ## 使用方法
 
@@ -147,11 +195,13 @@
 
 >  **星星之火，可以燎原。**
 
-虽然目前计算机系的部分课程质量仍然堪忧，**但是我们每提出一次课改意见，每贡献一次开源资料，都会为计算机系课程质量提升留下不可磨灭的贡献。**我们会帮助到之后的学弟学妹，更高年级学长学姐也会如此帮助我们。
+虽然目前计算机系的部分课程质量仍然堪忧，**但是我们每提出一次课改意见，每贡献一次开源资料，都会为计算机系课程质量提升留下不可磨灭的贡献**。我们会帮助到之后的学弟学妹，更高年级学长学姐也会如此帮助我们。
 
 ## 尾声
 
 于是乎，就有了你看到的此份文档。这份文档是我个人邀请三位一字班计算机系或者软院的同学们一同参考暑培讲义所编写的。基本涵盖了小学期 Python 课程的所有需求。在暑培课程之外，我们扩充了相应的文档和资料。从[语法基础](https://docs.net9.org/languages/python/)，到 IPython，Numpy，Pandas，BeautifulSoup4，Matplotlib，Django 等全部资料。
+
+<img src="https://raw.githubusercontent.com/zhaochenyang20/zhaochenyang20.github.io/master/img/profile_7.jpg" style="zoom:15%;" />
 
 # 致谢
 

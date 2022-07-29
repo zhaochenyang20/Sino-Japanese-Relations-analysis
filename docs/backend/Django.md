@@ -9,8 +9,9 @@ Django 是一个由 Python 编写的一个开放源代码的 Web 应用框架。
 + 掌握一种在服务器上部署 Django 的方式 （Django + Nginx + uWSGI 部署）。
 
 ## 前置准备
-请参考 lambda 学长暑培授课中的[课前准备文档](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/afcd22dc-cbe1-4abf-869a-ca6520114a1b/Django_课前准备.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220725%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220725T093921Z&X-Amz-Expires=86400&X-Amz-Signature=940a8fdf79d301bff7e19953d30371a7df1f447a08091a9251f79a7a028b0da6&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Django%2520%25E8%25AF%25BE%25E5%2589%258D%25E5%2587%2586%25E5%25A4%2587.pdf%22&x-id=GetObject)。
+请参考 lambda 学长暑培授课中的[课前准备文档](./Django_preparation.pdf)。
 通过此命令可以检查你是否已经安装 Django 及 Django 版本。
+
 ```bash
 python -m django --version
 ```
@@ -21,7 +22,6 @@ python -m django --version
 ### 新建项目
 如果这是你第一次使用 Django 的话，你需要一些初始化设置。也就是说，你需要用一些自动生成的代码配置一个 Django project —— 即一个 Django 项目实例需要的设置项集合，包括数据库配置、Django 配置和应用程序配置。
 打开命令行，cd 到一个你想放置你代码的目录，然后运行以下命令：
-
 ```
 django-admin startproject mysite
 ```
@@ -77,6 +77,7 @@ def index(request):
 这时，调用 index 将返回一个 HTTP 响应，内容为 Hello, world. You're at the polls index. 。
 
 ### 创建路由
+
 路由配置告诉 Django 哪些的 URL 应该被分配给哪些视图。我们来为我们刚才编写的 index 试图配置路由。
 
 首先配置应用一级的路由，在 polls 目录下新建 `urls.py` ，输入以下内容：
@@ -110,12 +111,11 @@ http://localhost:8000/polls/hello
 当我们访问 http://localhost:8000/polls/hello ，Django 哪来进行匹配的部分是 `polls/hello` 首先在项目一级匹配，匹配到了 `polls/` ，于是 `polls/` 被去除，剩下 hello 子串到应用 polls 的 `urls.py` 中进行匹配。hello 子串又匹配到了视图 index 。此时 HTTP 请求作为第一个参数传给了 index 函数进行处理。index 函数处理这个请求后，应当返回一个 HttpResponse 对象，Django 会将这个对象对应的 HTTP 响应传递给客户端。
 
 ### 使用数据库
-
-接下来我们来演示如何使用 Django 的 ORM 模型来操作数据库。Django 支持多种数据库。默认情况下，Django使用 SQLite3 作为数据库。这种情形无需配置。我们也可以使用 MySQL 作为数据库。在此处我们以 MySQL 为例。如果你对 MySQL 不熟悉，可以参看[暑培文档](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/982f0e8c-6664-4d61-94b8-a5f2352971b7/讲义v1.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220725%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220725T225246Z&X-Amz-Expires=86400&X-Amz-Signature=daf071e8b51826c0e6a1c3cdc49e881fc7c2f187f65aeed739ce836dbedac22c&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22%25E8%25AE%25B2%25E4%25B9%2589v1.pdf%22&x-id=GetObject)中的 MySQL 部分。
+接下来我们来演示如何使用 Django 的 ORM 模型来操作数据库。Django 支持多种数据库。默认情况下，Django使用 SQLite3 作为数据库。这种情形无需配置。我们也可以使用 MySQL 作为数据库。在此处我们以 MySQL 为例。如果你对 MySQL 不熟悉，可以参看[暑培文档](./SQL.pdf)中的 MySQL 部分。
 
 #### settings.py
 
-在使用数据库前，我们需要先了解 `settings.py `中进行一些常用设置：
+在使用数据库前，我们需要先了解 `settings.py` 中进行一些常用设置：
 > DEBUG
 决定项目是在调试状态还是在生产环境。
 **永远不要在 DEBUG 开启的情况下将网站部署到生产中**。DEBUG 开启时，产生错误会返回详细的错误报告，其中包含许多敏感信息，不宜在生产环境中泄露。DEBUG 关闭时，产生的错误仅有简略说明。
@@ -132,7 +132,7 @@ DATABASES
 ```bash
 pip install mysqlclient
 ```
-然后在恰当位置创建 MySQL 数据库的配置文件 `my.cnf` ，输入你的数据库配置:
+然后在恰当位置创建 MySQL 数据库的配置文件 `my.cnf `，输入你的数据库配置:
 ```
 [client]
 host = 服务器地址
@@ -143,7 +143,7 @@ port = 端口
 default-character-set = 字符集，这里推荐 utf8mb4
 ```
 然后，在 `settings.py` 进行如下修改:
-```
+```python
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -156,7 +156,7 @@ DATABASES = {
 如果填入的地址为相对路径，那么将会是相对运行 `manage.py` 时的工作目录。
 
 #### 建立模型
-模型对应于数据库中的表，可以用来设计和访问数据库的结构。我们为 polls 应用建立模型。编辑 `models.py ` 输入以下内容：
+模型对应于数据库中的表，可以用来设计和访问数据库的结构。我们为 polls 应用建立模型。编辑 `models.py` 输入以下内容：
 ```python
 from django.db import models
 class Question(models.Model):
@@ -169,7 +169,7 @@ class Choice(models.Model):
     votes = models.IntegerField(default=0)
 ```
 上面的代码建立了两个模型，对应于数据库中的两张表。模型是 models.Model 的子类，模型的字段是 models.Field 的实例。模型的每个字段对应于数据库中的一个字段。
-在建立模型后我们需要让 Django 在数据库中建立这些模型，或对模型的修改做出对应数据库结构的调 整。因此我们需要首先注册这一应用。在 `settings.py` 中，将我们的应用添加到 INSTALLED_APPS 中。
+在建立模型后我们需要让 Django 在数据库中建立这些模型，或对模型的修改做出对应数据库结构的调整。因此我们需要首先注册这一应用。在 `settings.py` 中，将我们的应用添加到 INSTALLED_APPS 中。
 
 ```python
 INSTALLED_APPS = [
@@ -424,11 +424,10 @@ Django 对前后端耦合的开发模式有深入的支持，但模板和表单�
 以下介绍使用 Djaongo 搭建纯后端的基本操作。
 
 ### 使用 Django 收发请求
-
 作为一个后端来说，最为常规的操作可能读取请求参数和收发各种 JSON。
 
 #### GET
-仍以上述投票程序为例，假设我们希望实现这样一个接口，请求 `/polls/questions/2` 返回 id=2 的问题文本、创建时间和所有选项，此时我们可以写如下一个视图函数:
+仍以上述投票程序为例，假设我们希望实现这样一个接口，请求 `/polls/questions/` 返回 id=2 的问题文本、创建时间和所有选项，此时我们可以写如下一个视图函数:
 ```python
 from django.http import HttpRequest, JsonResponse
 from .models import *
@@ -541,7 +540,6 @@ def leaderboard(req: HttpRequest):
 此时若收到的请求不是 GET 请求，则会返回一个错误。
 
 ## 部署 Django
-
 后端编写好后，我们希望将其部署在服务器上，这样我们就可以通过服务器对外网的端口访问页面。
 在此使用一种典型部署：使用 uWSGI 来代理 Django，再用反向代理 Nginx 连接 uWSGI，将其代理到外网。
 
