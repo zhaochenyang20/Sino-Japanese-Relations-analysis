@@ -32,14 +32,14 @@ logger.addHandler(console)
 
 class FacebookCrawler:
     def __init__(self):
-        with open("facebook/settings.txt", "r", encoding='utf-8') as f:
+        with open("facebook/settings.json", "r", encoding='utf-8') as f:
             self.settings = json.load(f)
         logger.info("Settings loaded")
         self.driver = None
 
     def login(self):
         """
-        登入 facebook
+        登入 facebook。将账号和密码写在 facebook/settings.json 中
         :return:
         """
         # open chrome
@@ -49,7 +49,7 @@ class FacebookCrawler:
         driver.get("https://www.facebook.com")
         wdw(driver, 20).until(EC.visibility_of_element_located((By.XPATH, "//button[@name='login']")))
         logger.info("visiting https://www.facebook.com")
-        time.sleep(0.5)
+        time.sleep(1)
 
         # fill in email and password
 
@@ -68,12 +68,14 @@ class FacebookCrawler:
     def get_information(self):
         """
         搜索 facebook 信息
-        注意：请手动搜索
+        注意：搜索过程请手动，利用 facebook 的高级搜索功能
         :return:
         """
         driver = self.driver
 
         # !!!此处请手动搜索!!!操作太麻烦了!!!
+        logger.info("please start searching...")
+        time.sleep(40)
 
         page = 1
         prev_height = 0
@@ -84,20 +86,27 @@ class FacebookCrawler:
                 time.sleep(1)
                 now_height = driver.execute_script("return document.documentElement.scrollHeight")
 
-                # 如果滑动到页面地步，那么就停止
-                # 注意!!!如果你滑走页面的话这里可能有 bug !!!可能会不滑动到底部就停下
+                # 如果滑动到页面底部，那么就停止
+                # 注意：如果你滑走页面的话这里可能有 bug 。可能会不滑动到底部就停下
                 if prev_height == now_height:
                     logger.info("finish crawling!!")
                     break
 
                 if page % 5 == 0:
-                    with open(f"res/{page // 10}.html", "w") as f:
+                    with open(f"facebook/{page // 5}.html", "w") as f:
                         f.write(driver.page_source)
+                    logger.info(f"{page // 5}.html written")
 
-                page += 1
                 logger.info(f"the {page}th page finished")
+                page += 1
                 prev_height = now_height
                 time.sleep(20)
 
             except Exception as e:
                 print(str(e))
+
+
+if __name__ == "__main__":
+    c = FacebookCrawler()
+    c.login()
+    c.get_information()

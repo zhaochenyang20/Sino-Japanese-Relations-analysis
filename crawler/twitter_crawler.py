@@ -33,15 +33,15 @@ logger.addHandler(console)
 
 def login():
     """
-    登录https://twitter.com/home
-    请将账号和密码分别写在twitter/settings.txt下的'username'和'password'中
+    登录 https://twitter.com/home
+    请将账号和密码分别写在 twitter/settings.json 下的 'username' 和 'password' 中
     :return: driver 模拟浏览器
     """
 
-    with open("twitter/settings.txt", "r", encoding='utf-8') as f:
+    with open("twitter/settings.json", "r", encoding='utf-8') as f:
         settings = json.load(f)
 
-    # 登录界面啦
+    # 登录界面
     driver = selenium.webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
     driver.get("https://twitter.com/home")
     wdw(driver, 20).until(EC.visibility_of_element_located((By.XPATH, '//div[@class="css-901oao r-1awozwy r-6koalj r-18u37iz r-16y2uox r-37j5jr r-a023e6 r-b88u0q r-1777fci r-rjixqe r-bcqeeo r-q4m81j r-qvutc0"]')))
@@ -62,19 +62,20 @@ def login():
     logger.info('sending password')
     btn = driver.find_element(By.XPATH, '//div[@class="css-901oao r-1awozwy r-6koalj r-18u37iz r-16y2uox r-37j5jr r-a023e6 r-b88u0q r-1777fci r-rjixqe r-bcqeeo r-q4m81j r-qvutc0"]')
     btn.click()
+    wdw(driver, 20).until(EC.visibility_of_element_located((By.XPATH, "//input[@aria-label='Search query']")))
 
     return driver
 
 
 def get_page(driver):
     """
-    根据twitter/settings.txt下的搜索请求，在twitter站内进行搜索，将结果写入twitter/{query}.html
-    利用selenium自动翻页到最底部
-    :param driver 浏览器!
+    根据 twitter/settings.json 下的搜索关键词，在 twitter 站内进行搜索，将结果写入 twitter/{query}.html
+    利用 selenium 自动翻页到最底部
+    :param driver 浏览器
     :return:
     """
 
-    with open("twitter/settings.txt", "r", encoding="utf-8") as f:
+    with open("twitter/settings.json", "r", encoding="utf-8") as f:
         query_list = json.load(f)['query']
 
     for query in query_list:

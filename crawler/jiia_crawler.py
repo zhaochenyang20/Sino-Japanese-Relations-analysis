@@ -39,7 +39,7 @@ def get_url_from_google(keyword, page):
     :param keyword: 希望搜索的关键词
     :return:
     """
-    with open("jiia/settings.txt", "r") as f:
+    with open("jiia/settings.json", "r") as f:
         settings = json.load(f)
 
     while True:  # 也可以改成改成for i in range( page , {谷歌搜索该关键词的总页数})
@@ -84,13 +84,13 @@ def get_url_from_google(keyword, page):
             return page
 
 
-def jiia_pdf_downloader():
+def download_jiia_pdf():
     """
-    利用 selenium 下载 /jiia/url.txt 下所有 .pdf 网页中的 pdf 文件，下载地址保存在 jiia/settings.txt 中
-    函数中每次time.sleep(5)，但网页似乎并没有设防，如果觉得太慢可以减小
+    利用 selenium 下载 /jiia/url.txt 下所有 .pdf 网页中的 pdf 文件，下载地址保存在 jiia/settings.json 中
+    函数中每次 time.sleep(5) ，但网页似乎并没有设防，如果觉得太慢可以减小
     :return:
     """
-    with open("jiia/settings.txt", "r", encoding='utf-8') as f:
+    with open("jiia/settings.json", "r", encoding='utf-8') as f:
         settings = json.load(f)
 
     with open("jiia/url.txt", "r") as f:
@@ -114,7 +114,7 @@ def jiia_pdf_downloader():
         if url in written_list:
             continue
 
-        # 只访问以.pdf结尾的网站
+        # 只访问以 .pdf 结尾的网站
         data_type = re.findall("\.\w+", url)[-1]
         if data_type == '.pdf':
             driver.get(url)
@@ -124,8 +124,8 @@ def jiia_pdf_downloader():
             time.sleep(5)
 
 
-def jiia_html_downloader():
-    with open("jiia/jiia.txt", "r") as f:
+def download_jiia_html():
+    with open("jiia/url.txt", "r") as f:
         url_list = f.read().split()
 
     for index, url in enumerate(url_list):
@@ -167,3 +167,13 @@ def jiia_html_downloader():
                 logger.info(e)
                 time.sleep(random.uniform(10, 50))
 
+
+def main():
+    keyword = ""
+    get_url_from_google(keyword, 0)
+    download_jiia_pdf()
+    download_jiia_html()
+
+
+if __name__ == "__main__":
+    main()

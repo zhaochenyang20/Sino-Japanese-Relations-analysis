@@ -12,7 +12,7 @@ formatter = logging.Formatter(fmt, datefmt)
 logger = logging.getLogger()
 logger.setLevel(level)
 
-file = logging.FileHandler('geron_npo/geron_npo.log', encoding='utf-8')
+file = logging.FileHandler('genron_npo/genron_npo.log', encoding='utf-8')
 file.setLevel(level)
 file.setFormatter(formatter)
 logger.addHandler(file)
@@ -23,11 +23,11 @@ console.setFormatter(formatter)
 logger.addHandler(console)
 
 
-def npo_get_urls_from_npo(target):
+def get_urls_from_npo(keyword):
     """
     输入希望查找的关键词，在 npo 站内进行搜索
-    搜索结果写入 ./jiia/url.txt 中
-    :param target: str
+    搜索结果写入 ./genron_npo/url.txt 中
+    :param keyword: str
     :return:
     """
 
@@ -35,8 +35,8 @@ def npo_get_urls_from_npo(target):
     while True:
 
         # 获取网页源码
-        resp = requests.get(f"https://www.genron-npo.net/mtos/mt-search.cgi?search={target}&IncludeBlogs=\
-        11%2C7%2C2%2C22%2C18%2C23%2C13%2C6%2C9%2C12%2C14%2C15%2C8%2C10%2C19%2C5&blog_id=9&limit=20&page={page}")
+        resp = requests.get(
+            f"https://www.genron-npo.net/mtos/mt-search.cgi?search={keyword}&IncludeBlogs=11%2C7%2C2%2C22%2C18%2C23%2C13%2C6%2C9%2C12%2C14%2C15%2C8%2C10%2C19%2C5&blog_id=9&limit=20&page={page}")
         logger.info(f'getting the {page}th page')
 
         # 获取文章 url
@@ -50,18 +50,18 @@ def npo_get_urls_from_npo(target):
             logger.info("finish searching")
             break
         else:
-            page += 1
-            logger.info("finish searching: \n" + '\n'.join(urls))
             with open("genron_npo/url.txt", "a+") as f:
                 f.write('\n'.join(urls) + '\n')
+            logger.info("finish searching: \n" + '\n'.join(urls))
+            page += 1
 
 
-def npo_write_articles():
+def write_articles():
     """
     获取文章的 url, 在 genron-npo 文件夹下生成文章
     :return:
     """
-    with open("jiia/url.txt", "r") as f:
+    with open("genron_npo/url.txt", "r") as f:
         url_list = f.read().split('\n')
 
     for url in url_list:
@@ -70,7 +70,7 @@ def npo_write_articles():
         resp.encoding = 'utf-8'
         logger.info(f"getting {url}")
 
-        # 获取信息
+        # 获取文章
         soup = BS(resp.text, 'lxml')
         title = soup.find_all("h1")[1].text
         body = soup.find("section", class_="entry")
