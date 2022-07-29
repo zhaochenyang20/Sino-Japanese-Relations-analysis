@@ -29,13 +29,13 @@ logger.addHandler(console)
 
 def get_proxy():
     """
-    根据 tieba/settings.txt 中保存的 IP 池的 API，提取 IP。
+    根据 tieba/settings.json 中保存的 IP 池的 API，提取 IP。
     首先筛选已经用过的 IP， 再筛选无法连接的 IP， 最后返回一个可用的 Proxy_tag
     :return: str - proxy_tag (eg. '123.33.22.11:12345')
     """
 
     # 获取 IP 池
-    with open("tieba/settings.txt", "r", encoding='utf-8') as f:
+    with open("tieba/settings.json", "r", encoding='utf-8') as f:
         settings = json.load(f)
     api = settings['api']
     proxy_list = requests.get(api).json()['data']

@@ -37,8 +37,8 @@ logger.addHandler(console)
 
 def get_video_url_from_youtube(keyword):
     """
-    根据输入的关键词在youtube中搜索相应的结果，在youtube/url.txt下写入目标视频的URL
-    注意，youtube站内搜索结果非常有限，需要通过谷歌搜索才能获取大量内容
+    根据输入的关键词在 youtube 中搜索相应的结果，在 youtube/url.txt 下写入目标视频的URL
+    注意，youtube 站内搜索结果非常有限，需要通过谷歌搜索才能获取大量内容
     :param keyword: 搜索关键词
     :return:
     """
@@ -48,15 +48,15 @@ def get_video_url_from_youtube(keyword):
     query_url="https://m.youtube.com/results?search_query="+keyword
     resp = requests.get(query_url, headers=headers)
 
-    # 获取包含每个视频信息的list
+    # 获取包含每个视频信息的 list
     result_str = re.findall(r'ytInitialData = (.*);</script>', resp.text)[0]
     result_dict = json.loads(result_str)
     content_list = result_dict['contents']['twoColumnSearchResultsRenderer']['primaryContents']['sectionListRenderer']['contents'][0]['itemSectionRenderer']['contents']
 
-    # 提取每个视频的url
+    # 提取每个视频的 url
     for content in content_list:
 
-        # 不是所有视频都有videoRenderer tag
+        # 不是所有视频都有 videoRenderer tag
         try:
             video_url = "https://www.youtube.com/watch?v="+content['videoRenderer']['videoId']
             with open(f"youtube/url.txt", "a+") as f:
@@ -67,51 +67,58 @@ def get_video_url_from_youtube(keyword):
 
 def get_video_url_from_google(keyword, page):
     """
-    根据输入的关键词在youtube中搜索相应的结果，在youtube/url.txt下写入目标视频的URL
-    注意，如果搜索次数太多请求会返回429，可以多次运行该函数 [可恶的谷歌:(]
+    根据输入的关键词在 youtube 中搜索相应的结果，在 youtube/url.txt 下写入目标视频的 URL
+    注意，如果搜索次数太多请求会返回 429 ，可以多次运行该函数
     :param page: 上次停留的页面值
     :param keyword: 搜索关键词
     :return: page: 停止时的页面
     """
-    with open("youtube/settings.txt", "r", encoding='utf-8') as f:
+
+    with open("youtube/settings.json", "r", encoding='utf-8') as f:
         settings = json.load(f)
+
     headers = {
-        "user-agent": ua(use_cache_server=False).random,
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko)Chrome/103.0.0.0 Safari/537.36",
         "cookie": settings['cookie']
     }
 
     while True:
         resp = requests.get(f"https://www.google.com.hk/search?q=site:youtube.com+{keyword}&newwindow=1&ei=\
-        lbDeYqXBBJzQkPIPz7SngAU&start={page}0&sa=N&ved=2ahUKEwjl37rPp5T5AhUcKEQIHU_aCVAQ8tMDegQIARA8&biw=1323&bih=762&dpr=2")
+        lbDeYqXBBJzQkPIPz7SngAU&start={page}0&sa=N&ved=2ahUKEwjl37rPp5T5AhUcKEQIHU_aCVAQ8tMDegQIARA8&biw=1323&bih=762&dpr=2",
+                            headers=headers)
 
-        # 爬多了就会429，也可以直接把程序停下来多等一会
+        # 爬多了就会 429，也可以直接把程序停下来多等一会
         if resp.status_code != 200:
             logger.info(f"Response: {resp.status_code}")
             time.sleep(random.uniform(60, 120))
             continue
 
-        # 200则开始解析！
+        # 200 则开始解析！
         soup = BS(resp.text, 'lxml')
-        href_list = list(map(lambda x: x['href'], soup.find_all("a", target="_blank")[0:20:2]))
-        with open(f"youtube/url.txt", "a+") as f:
-            f.write("\n".join(href_list) + '\n')
+        href_list = set(map(lambda x: x['href'],
+                            filter(lambda x: 'class' not in x.attrs,
+                                   soup.find_all("a", target="_blank")
+                                   )
+                            )
+                        )
 
         if href_list:
-            logger.info(f"{page} finished!")
+            with open(f"youtube/url.txt", "a+") as f:
+                f.write("\n".join(href_list) + '\n')
+            logger.info(f"page{page} finished: \n" + '\n'.join(href_list))
             page += 1
-            time.sleep(5)
+            time.sleep(10)
 
         else:
-            # 不确定是错误还是结束了所以输出text，并返回page，结束程序
+            # 不确定是错误还是结束了所以输出 text ，并返回 page ，结束程序
             logger.info(f"{resp.text}")
             return page
 
 
 def get_page():
     """
-    根据youtube/url.txt下的URL，依次访问每一个网页，并且获取网页的源代码，写入./youtube文件夹下
-    已访问的视频id会写入youtube/written.txt，所以可以随时停下该函数，不用担心redundant visit
-    利用selenium自动访问，效率不高(不过反正也没太多)
+    根据 youtube/url.txt 下的 URL，依次访问每一个网页，并且获取网页的源代码，写入 ./youtube 文件夹下
+    已访问的视频 id 会写入 youtube/written.txt，所以可以随时停下该函数，不用担心 redundant visit
     :return:
     """
 
@@ -120,7 +127,7 @@ def get_page():
     with open("youtube/url.txt", "r") as f:
         url_list = f.read().split()
 
-    # 遍历所有url捏
+    # 遍历所有 url
     for url in tqdm(url_list, total=len(url_list)):
 
         # 过滤访问过的网页
@@ -138,7 +145,7 @@ def get_page():
             logger.info(f"visiting {url}")
             time.sleep(1)
 
-            # 点击 'more' button，但是不是每一个网页都有more，所以需要try-except
+            # 点击 'more' button，但不是每一个网页都有 more
             try:
                 btn = driver.find_element(By.XPATH, "//tp-yt-paper-button[@id='expand']")
                 time.sleep(5)

@@ -44,7 +44,7 @@ def login():
     # 登录界面
     driver = selenium.webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
     driver.get("https://twitter.com/home")
-    wdw(driver, 20).until(EC.visibility_of_element_located((By.XPATH, '//div[@class="css-901oao r-1awozwy r-6koalj r-18u37iz r-16y2uox r-37j5jr r-a023e6 r-b88u0q r-1777fci r-rjixqe r-bcqeeo r-q4m81j r-qvutc0"]')))
+    wdw(driver, 20).until(EC.visibility_of_element_located((By.XPATH, "//input[@autocomplete='username']")))
     logger.info('begin logging in')
     time.sleep(1)
 
@@ -56,8 +56,9 @@ def login():
     btn.click()
 
     # 输入密码，并跳转
-    wdw(driver, 5).until(EC.visibility_of_element_located((By.XPATH, "/input[@autocomplete='sentences']")))
-    passwd = driver.find_element(By.XPATH, "/input[@autocomplete='sentences']")
+    time.sleep(3)
+    wdw(driver, 10).until(EC.visibility_of_element_located((By.XPATH, "//input[@name='password']")))
+    passwd = driver.find_element(By.XPATH, "//input[@name='password']")
     passwd.send_keys(settings['password'])
     logger.info('sending password')
     btn = driver.find_element(By.XPATH, '//div[@class="css-901oao r-1awozwy r-6koalj r-18u37iz r-16y2uox r-37j5jr r-a023e6 r-b88u0q r-1777fci r-rjixqe r-bcqeeo r-q4m81j r-qvutc0"]')
@@ -69,8 +70,8 @@ def login():
 
 def get_page(driver):
     """
-    根据 twitter/settings.json 下的搜索关键词，在 twitter 站内进行搜索，将结果写入 twitter/{query}.html
-    利用 selenium 自动翻页到最底部
+    根据 twitter/settings.json 下的搜索关键词('query' 属性)，在 twitter 站内进行搜索，将结果写入 twitter/{date}.html
+    query 格式: {keyword} until: 2012-10-01 since: 2012-09-01
     :param driver 浏览器
     :return:
     """
@@ -100,7 +101,7 @@ def get_page(driver):
         while True:
             try:
                 # 一直往下翻页！
-                driver.execute_script("scrollBy(0, 10000)")
+                driver.execute_script("scrollBy(0, 3000)")
                 time.sleep(20)
 
                 # 获取最新的高度，如果最新高度等于原先的高度，认为已经结束这一页的爬取

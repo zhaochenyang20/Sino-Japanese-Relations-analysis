@@ -71,10 +71,9 @@ def get_url_from_google(keyword, page):
 
         # 如果成功找到了
         if href_list:
-            logger.info(f"{page} finished!")
             with open("jiia/url.txt", "a+") as f:
                 f.write("\n".join(href_list) + '\n')
-            logger.info("finished: \n" + '\n'.join(href_list))
+            logger.info(f"page{page} finished: \n" + '\n'.join(href_list))
             page += 1
             time.sleep(10)
 
