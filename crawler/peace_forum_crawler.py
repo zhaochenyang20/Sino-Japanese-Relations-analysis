@@ -24,8 +24,7 @@ logger.addHandler(console)
 
 def get_articles():
     """
-    根据peace_forum/url.txt下的链接查找网页，将网页写入peace_forum/{index}.html
-    事实上呢，链接是我手动爬的 :P
+    Get the source code of all the websites in peace_forum/url.txt.
     :return:
     """
     with open("peace_forum/url.txt", "r") as f:
@@ -33,7 +32,7 @@ def get_articles():
 
     for index, url in enumerate(url_list):
 
-        resp = requests.get(url,headers={"user-agent": ua(use_cache_server=False).random})
+        resp = requests.get(url, headers={"user-agent": ua(use_cache_server=False).random})
         resp.encoding = 'UTF-8'
         logger.info(f"getting {url}")
 

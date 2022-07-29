@@ -33,18 +33,16 @@ logger.addHandler(console)
 
 def login():
     """
-    登录https://twitter.com/home
-    请将账号和密码分别写在twitter/settings.txt下的'username'和'password'中
-    :return: driver 模拟浏览器
+    login to https://twitter.com/home .
+    :return: driver selenium webdriver
     """
-
-    with open("twitter/settings.txt", "r", encoding='utf-8') as f:
+    with open("twitter/settings.json", "r", encoding='utf-8') as f:
         settings = json.load(f)
 
-    # 登录界面啦
+    # 登录界面
     driver = selenium.webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
     driver.get("https://twitter.com/home")
-    wdw(driver, 20).until(EC.visibility_of_element_located((By.XPATH, '//div[@class="css-901oao r-1awozwy r-6koalj r-18u37iz r-16y2uox r-37j5jr r-a023e6 r-b88u0q r-1777fci r-rjixqe r-bcqeeo r-q4m81j r-qvutc0"]')))
+    wdw(driver, 20).until(EC.visibility_of_element_located((By.XPATH, "//input[@autocomplete='username']")))
     logger.info('begin logging in')
     time.sleep(1)
 
@@ -56,25 +54,27 @@ def login():
     btn.click()
 
     # 输入密码，并跳转
-    wdw(driver, 5).until(EC.visibility_of_element_located((By.XPATH, "/input[@autocomplete='sentences']")))
-    passwd = driver.find_element(By.XPATH, "/input[@autocomplete='sentences']")
+    time.sleep(3)
+    wdw(driver, 10).until(EC.visibility_of_element_located((By.XPATH, "//input[@name='password']")))
+    passwd = driver.find_element(By.XPATH, "//input[@name='password']")
     passwd.send_keys(settings['password'])
     logger.info('sending password')
     btn = driver.find_element(By.XPATH, '//div[@class="css-901oao r-1awozwy r-6koalj r-18u37iz r-16y2uox r-37j5jr r-a023e6 r-b88u0q r-1777fci r-rjixqe r-bcqeeo r-q4m81j r-qvutc0"]')
     btn.click()
+    wdw(driver, 20).until(EC.visibility_of_element_located((By.XPATH, "//input[@aria-label='Search query']")))
 
     return driver
 
 
 def get_page(driver):
     """
-    根据twitter/settings.txt下的搜索请求，在twitter站内进行搜索，将结果写入twitter/{query}.html
-    利用selenium自动翻页到最底部
-    :param driver 浏览器!
+    Search for result in twitter. Searching query should be written in twitter/settings.json.
+    Query format: '{keyword} until: 2012-10-01 since: 2012-09-01'.
+    :param driver selenium webdriver
     :return:
     """
 
-    with open("twitter/settings.txt", "r", encoding="utf-8") as f:
+    with open("twitter/settings.json", "r", encoding="utf-8") as f:
         query_list = json.load(f)['query']
 
     for query in query_list:
@@ -99,7 +99,7 @@ def get_page(driver):
         while True:
             try:
                 # 一直往下翻页！
-                driver.execute_script("scrollBy(0, 10000)")
+                driver.execute_script("scrollBy(0, 3000)")
                 time.sleep(20)
 
                 # 获取最新的高度，如果最新高度等于原先的高度，认为已经结束这一页的爬取
