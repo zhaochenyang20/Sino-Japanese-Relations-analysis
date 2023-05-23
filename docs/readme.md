@@ -161,7 +161,7 @@ Pandas 与 Numpy 小学期并不必用，但是熟练的使用这两个工具会
 
 由于时间仓促，错误在所难免，如若文档出现问题，请及时在本仓库的 [Issue](https://github.com/zhaochenyang20/Sino-Japanese-Relations-analysis/issues) 界面提出。
 
-# 为何而写
+<!-- # 为何而写
 
 ## 初起
 
@@ -201,7 +201,7 @@ Pandas 与 Numpy 小学期并不必用，但是熟练的使用这两个工具会
 
 于是乎，就有了你看到的此份文档。这份文档是我个人邀请三位一字班计算机系或者软院的同学们一同参考暑培讲义所编写的。基本涵盖了小学期 Python 课程的所有需求。在暑培课程之外，我们扩充了相应的文档和资料。从[语法基础](https://docs.net9.org/languages/python/)，到 IPython，Numpy，Pandas，BeautifulSoup4，Matplotlib，Django 等全部资料。
 
-<img src="https://raw.githubusercontent.com/zhaochenyang20/zhaochenyang20.github.io/master/img/profile_7.jpg" style="zoom:15%;" />
+<img src="https://raw.githubusercontent.com/zhaochenyang20/zhaochenyang20.github.io/master/img/profile_7.jpg" style="zoom:15%;" /> -->
 
 # 致谢
 
